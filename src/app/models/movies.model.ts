@@ -3,13 +3,13 @@ export interface Movie {
     key: string;
     name: string;
     description: string;
-    genres: GenreType[];
+    genres: GenreTypes[];
     rate: string;
     length: string;
     img: string;
 }
 
-export enum GenreType {
+export enum GenreTypes {
     Action = "Action",
     Adventure = "Adventure",
     Biography = "Biography",
