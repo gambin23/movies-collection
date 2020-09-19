@@ -14,7 +14,7 @@
             <mat-card-title color="accent">{{movie.name}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p> {{movie.description}} </p>
+            <p>{{movie.description|truncate:[200]}}</p>
             <mat-chip-list aria-label="Genres">
                 <mat-chip *ngFor="let genre of movie.genres">
                     {{genre|uppercase}}

@@ -7,6 +7,7 @@ import { MoviesComponent } from "./components/movies/movies.component";
 import { MaterialUiModule } from "./material.module";
 
 import { AppStoreModule } from "./store/store.module";
+import { CommonUiModule } from "./common/common.module";
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { AppStoreModule } from "./store/store.module";
     ],
     imports: [
         BrowserModule,
+        CommonUiModule,
         MaterialUiModule,
         AppRoutingModule,
         AppStoreModule
