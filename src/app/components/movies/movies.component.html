@@ -1,20 +1,30 @@
 <mat-toolbar color="accent">
     <mat-form-field floatLabel="never" fxFlex>
-        <input matInput value="" (input)="search($event.target.value)">
+        <input matInput (input)="onSearch($event.target.value)" autocomplete="off">
         <mat-placeholder>Search…</mat-placeholder>
     </mat-form-field>
 </mat-toolbar>
-<mat-toolbar>
-    Showing {{filteredMovies?.length}} of {{allMovies?.length}}
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+        Showing {{filteredMovies?.length}} of {{allMovies?.length}}
+    </div>
+    <div fxLayoutGap="10px">
+        <mat-icon (click)="onSort('rating')" matTooltip="Sort by Rating" class="clickable" [class.active]="activeSortType === 'rating'">
+            star_border
+        </mat-icon>
+        <mat-icon (click)="onSort('alphabetical')" matTooltip="Sort Alphabetically" class="clickable" [class.active]="activeSortType === 'alphabetical'">
+            sort_by_alpha
+        </mat-icon>
+    </div>
 </mat-toolbar>
 <div class="container" fxLayout="row wrap" fxLayoutGap="15px">
     <mat-card *ngFor="let movie of filteredMovies" [routerLink]="movie.key" class="clickable mat-card-grid">
         <img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
         <mat-card-header color="accent">
-            <mat-card-title color="accent">{{movie.name}}</mat-card-title>
+            <mat-card-title color="accent">{{movie.name}} ({{movie.rate}})</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>{{movie.description|truncate:[200]}}</p>
+            <p>{{movie.description|truncate:150}}</p>
             <mat-chip-list aria-label="Genres">
                 <mat-chip *ngFor="let genre of movie.genres">
                     {{genre|uppercase}}

@@ -1,8 +1,9 @@
 @import '~@angular/material/theming';
-
+@import 'theme';
 @import 'card';
 @import 'chips';
 @import 'list-item';
+@import 'mat-icon';
 
 html,
 body {
@@ -16,7 +17,7 @@ body {
 }
 
 :focus {
-    outline:none;
+    outline: none;
 }
 
 #logo {
