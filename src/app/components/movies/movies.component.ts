@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 import { mergeMap } from "rxjs/operators";
 
 import { MoviesSelector } from "../../store/selectors/movies.selector";
-import { Movie } from "../../models/movies.model";
+import { GenreTypes, Movie } from "../../models/movies.model";
 
 @Component({
     selector: "movies",
@@ -24,8 +24,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.subscription = this.route.queryParams.pipe(
-            mergeMap(params =>
-                this.moviesSelector.get$(params.genre)
+            mergeMap(queryParams =>
+                this.moviesSelector.get$(queryParams.genre as GenreTypes[])
             ))
             .subscribe(movies => {
                 this.allMovies = movies;

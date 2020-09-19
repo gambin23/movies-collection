@@ -1,0 +1,12 @@
+<mat-toolbar color="accent">
+    {{movie?.name}}
+</mat-toolbar>
+<mat-chip-list aria-label="Genres">
+    <mat-chip *ngFor="let genre of movie.genres">
+        {{genre|uppercase}}
+    </mat-chip>
+</mat-chip-list>
+<p>{{movie?.description}}</p>
+<p>{{movie?.rate}}</p>
+<p>{{movie?.length}}</p>
+<img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" height="200px" width="150px" [alt]="movie.img">

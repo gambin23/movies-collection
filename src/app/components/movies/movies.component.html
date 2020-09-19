@@ -8,7 +8,7 @@
     Showing {{filteredMovies?.length}} of {{allMovies?.length}}
 </mat-toolbar>
 <div class="card-container" fxLayout="row wrap" fxLayoutGap="15px">
-    <mat-card *ngFor="let movie of filteredMovies">
+    <mat-card *ngFor="let movie of filteredMovies" [routerLink]="movie.key" class="clickable">
         <img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
         <mat-card-header color="accent">
             <mat-card-title color="accent">{{movie.name}}</mat-card-title>
