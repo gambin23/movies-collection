@@ -1,0 +1,26 @@
+@import 'theme';
+
+.card-container {
+    padding: 15px;
+}
+
+mat-card {
+    margin-bottom: 15px;
+    max-width: 225px;
+}
+
+
+mat-card-header {
+    background-color: mat-color($accent);
+    color: mat-color($black);
+    margin: -22px -16px 22px -16px;
+    padding: 15px;
+
+    & div {
+        margin: 0 !important;
+    }
+}
+
+mat-card-title {
+    margin: 0 !important;
+}

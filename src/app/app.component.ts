@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { GenreType } from "./models/movies.model";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: "app-root",
+    templateUrl: "./app.component.html"
 })
 export class AppComponent {
-  title = 'movies-collection';
+    public genres = Object.keys(GenreType);
 }
