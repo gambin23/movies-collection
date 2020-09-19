@@ -4,6 +4,7 @@ $primary: mat-palette($mat-blue-grey);
 $accent: mat-palette($mat-teal, A400);
 $warn: mat-palette($mat-deep-orange);
 $black: mat-palette($mat-grey, 900);
+$gray: mat-palette($mat-grey, 700);
 
 $theme: mat-dark-theme((color: (primary: $primary, accent: $accent, warn: $warn, )));
 @include angular-material-theme($theme);

@@ -1,12 +1,20 @@
 <mat-toolbar color="accent">
     {{movie?.name}}
 </mat-toolbar>
-<mat-chip-list aria-label="Genres">
-    <mat-chip *ngFor="let genre of movie.genres">
-        {{genre|uppercase}}
-    </mat-chip>
-</mat-chip-list>
-<p>{{movie?.description}}</p>
-<p>{{movie?.rate}}</p>
-<p>{{movie?.length}}</p>
-<img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" height="200px" width="150px" [alt]="movie.img">
+<mat-toolbar>
+    <mat-chip-list aria-label="Genres">
+        <mat-chip *ngFor="let genre of movie.genres">
+            {{genre|uppercase}}
+        </mat-chip>
+    </mat-chip-list>
+</mat-toolbar>
+<div class="container" fxLayout.gt-sm="row" fxLayout="column">
+    <div fxFlex.gt-md="20%" class="movie-card-img">
+        <img [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
+    </div>
+    <div fxFlex.gt-md="80%">
+        <p>{{movie?.description}}</p>
+        <p>{{movie?.rate}}</p>
+        <p>{{movie?.length}}</p>
+    </div>
+</div>

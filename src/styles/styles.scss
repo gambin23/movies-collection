@@ -2,6 +2,7 @@
 
 @import 'card';
 @import 'chips';
+@import 'list-item';
 
 html,
 body {
@@ -14,10 +15,31 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:focus {
+    outline:none;
+}
+
 #logo {
     margin: 15px;
 }
 
+.container {
+    padding: 15px;
+}
+
 .clickable {
     cursor: pointer;
+}
+
+.movie-card {
+    background-color: mat-color($black);
+    padding: 20px;
+
+    & img {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block;
+        height: 300px;
+        width: 220px !important;
+    }
 }

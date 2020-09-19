@@ -1,0 +1,11 @@
+.mat-list-item-focus {
+    background-color: mat-color($gray);
+
+    &:focus {
+        background-color: mat-color($gray)!important;
+    }
+}
+
+.mat-list-base {
+    padding-top: 0 !important;
+}

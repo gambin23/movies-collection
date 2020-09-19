@@ -3,10 +3,10 @@
         <mat-toolbar color="accent">
             <h1 id="logo">Movies Collection</h1>
         </mat-toolbar>
+        <mat-toolbar routerLink="/" class="clickable">
+            Home
+        </mat-toolbar>
         <mat-nav-list>
-            <mat-list-item routerLink="/movies" routerLinkActive="mat-list-item-focus">
-                All
-            </mat-list-item>
             <mat-list-item *ngFor="let genre of genres" routerLink="/movies" [queryParams]="{genre:genre|lowercase}" routerLinkActive="mat-list-item-focus">
                 {{genre}}
             </mat-list-item>
