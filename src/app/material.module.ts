@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatCardModule } from "@angular/material/card";
+import { MatChipsModule } from "@angular/material/chips";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
@@ -13,6 +14,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
         BrowserAnimationsModule,
         FlexLayoutModule,
         MatCardModule,
+        MatChipsModule,
         MatFormFieldModule,
         MatInputModule,
         MatListModule,

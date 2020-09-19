@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { createSelector, select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { Movie } from "../../models/movies.model";
+import { GenreTypes, Movie } from "../../models/movies.model";
 
 import { AppState } from "../reducers";
 
@@ -13,15 +12,13 @@ export class MoviesSelector {
 
     constructor(private store: Store<AppState>) { }
 
-    public get$(): Observable<Movie[]> {
+    public get$(genres?: GenreTypes[]): Observable<Movie[]> {
         return this.store.pipe(select(
-            createSelector(this.moviesState, state => state.data))
+            createSelector(this.moviesState, state => this.filterByGenre(state.data, genres)))
         );
     }
 
-    public search$(query: string): Observable<Movie[]> {
-        return this.get$().pipe(map(movies =>
-            movies.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase()))
-        ));
+    private filterByGenre(movies: Movie[], genres?: GenreTypes[]): Movie[] {
+        return genres ? movies?.filter(movie => movie.genres.some(value => genres.includes(value))) : movies;
     }
 }

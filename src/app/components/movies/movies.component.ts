@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { select, Store } from "@ngrx/store";
-import { Observable, Subscription } from "rxjs";
-import { MoviesSelector } from "src/app/store/selectors/movies.selector";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
+import { mergeMap } from "rxjs/operators";
 
+import { MoviesSelector } from "../../store/selectors/movies.selector";
 import { Movie } from "../../models/movies.model";
 
 @Component({
@@ -11,22 +12,33 @@ import { Movie } from "../../models/movies.model";
 })
 export class MoviesComponent implements OnInit, OnDestroy {
 
-    public isBusy: boolean;
-    public movies$: Observable<Movie[]>;
+    public allMovies: Movie[];
+    public filteredMovies: Movie[];
 
     private subscription = new Subscription();
 
-    constructor(private moviesSelector: MoviesSelector) { }
+    constructor(
+        private route: ActivatedRoute,
+        private moviesSelector: MoviesSelector
+    ) { }
 
     ngOnInit(): void {
-        this.movies$ = this.moviesSelector.get$();
+        this.subscription = this.route.queryParams.pipe(
+            mergeMap(params =>
+                this.moviesSelector.get$(params.genre)
+            ))
+            .subscribe(movies => {
+                this.allMovies = movies;
+                this.filteredMovies = movies;
+            });
     }
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }
 
-    search(value: string): void {
-        this.movies$ = this.moviesSelector.search$(value);
+    search(query: string): void {
+        this.filteredMovies =
+            query ? this.allMovies.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase())) : this.allMovies;
     }
 }

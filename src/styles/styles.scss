@@ -1,4 +1,7 @@
+@import '~@angular/material/theming';
+
 @import 'card';
+@import 'chips';
 
 html,
 body {
@@ -14,4 +17,3 @@ body {
 #logo {
     margin: 15px;
 }
-

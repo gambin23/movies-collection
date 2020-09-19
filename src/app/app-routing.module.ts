@@ -6,10 +6,11 @@ import { MoviesComponent } from "./components/movies/movies.component";
 const routes: Routes = [
     {
         path: "",
-        component: MoviesComponent
+        redirectTo: "/movies",
+        pathMatch: "full"
     },
     {
-        path: "genre/:genreType",
+        path: "movies",
         component: MoviesComponent
     }
 ];
