@@ -8,7 +8,7 @@ import { FavouritesSelector } from "../store/selectors/favourites.selector";
 import { GenreTypes, Movie } from "../models/movies.model";
 
 @Component({
-    selector: "movies-page",
+    selector: "page-movies",
     templateUrl: "./movies.page.html"
 })
 export class MoviesPageComponent implements OnInit, OnDestroy {

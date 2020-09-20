@@ -1,10 +1,11 @@
 <mat-sidenav-container fullscreen>
     <mat-sidenav mode="side" opened>
-        <mat-toolbar color="accent">
+        <mat-toolbar routerLink="" color="accent" class="clickable">
             <h1 id="logo">Movies Collection</h1>
         </mat-toolbar>
-        <mat-toolbar routerLink="/" class="clickable">
-            Home
+        <mat-toolbar routerLink="/favourites" class="clickable" fxLayoutAlign="space-between center">
+            Favourites
+            <mat-icon>stars</mat-icon>
         </mat-toolbar>
         <mat-selection-list>
             <mat-list-item routerLink="/movies" (click)="setGenres(null)" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="mat-list-item-focus"

@@ -6,15 +6,16 @@ import { MaterialUiModule } from "./material.module";
 import { AppStoreModule } from "./store/store.module";
 import { CommonUiModule } from "./common/common.module";
 import { AppComponent } from "./app.component";
+import { FavouritesPageComponent } from "./pages/favourites.page";
 import { MoviesPageComponent } from "./pages/movies.page";
 import { MoviePageComponent } from "./pages/movie.page";
 import { MoviesComponent } from "./components/movies/movies.component";
 import { MovieComponent } from "./components/movie/movie.component";
-import { GenreParamsGuard } from "./common/guards/genre-params.guard";
 
 @NgModule({
     declarations: [
         AppComponent,
+        FavouritesPageComponent,
         MoviesPageComponent,
         MoviePageComponent,
         MoviesComponent,
@@ -29,9 +30,6 @@ import { GenreParamsGuard } from "./common/guards/genre-params.guard";
     ],
     bootstrap: [
         AppComponent
-    ],
-    providers: [
-        GenreParamsGuard
     ]
 })
 export class AppModule { }
