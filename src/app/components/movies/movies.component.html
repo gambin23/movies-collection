@@ -6,7 +6,7 @@
 </mat-toolbar>
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
     <div>
-        Showing {{filteredMovies?.length}} of {{allMovies?.length}}
+        Showing {{filteredMovies?.length}} of {{movies?.length}}
     </div>
     <div fxLayoutGap="10px">
         <mat-icon (click)="onSort('rating')" matTooltip="Sort by Rating" class="clickable" [class.active]="activeSortType === 'rating'">

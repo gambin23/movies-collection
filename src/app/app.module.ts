@@ -6,23 +6,25 @@ import { MaterialUiModule } from "./material.module";
 import { AppStoreModule } from "./store/store.module";
 import { CommonUiModule } from "./common/common.module";
 import { AppComponent } from "./app.component";
+import { MoviesPageComponent } from "./pages/movies.page";
+import { MoviePageComponent } from "./pages/movie.page";
 import { MoviesComponent } from "./components/movies/movies.component";
 import { MovieComponent } from "./components/movie/movie.component";
 
 @NgModule({
     declarations: [
         AppComponent,
+        MoviesPageComponent,
+        MoviePageComponent,
         MoviesComponent,
         MovieComponent
     ],
     imports: [
         BrowserModule,
+        AppRoutingModule,
         CommonUiModule,
         MaterialUiModule,
-        AppRoutingModule,
         AppStoreModule
-    ],
-    providers: [
     ],
     bootstrap: [
         AppComponent

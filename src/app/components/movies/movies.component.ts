@@ -1,55 +1,32 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
-import { mergeMap } from "rxjs/operators";
 import { orderBy } from "lodash";
 
-import { MoviesSelector } from "../../store/selectors/movies.selector";
-import { GenreTypes, Movie } from "../../models/movies.model";
+import { Movie } from "../../models/movies.model";
 import { SortType } from "./movies.model";
 import { FavouritesActions } from "../../store/actions/favourites.actions";
-import { FavouritesSelector } from "../../store/selectors/favourites.selector";
 
 @Component({
     selector: "movies",
     templateUrl: "./movies.component.html"
 })
-export class MoviesComponent implements OnInit, OnDestroy {
+export class MoviesComponent implements OnChanges {
 
-    public allMovies: Movie[];
+    @Input() movies: Movie[];
+    @Input() favourites: string[];
+
     public filteredMovies: Movie[];
-    public favourites: string[];
     public activeSortType: SortType = "alphabetical";
 
-    private subscriptions = new Subscription();
+    constructor(private favouritesActions: FavouritesActions) { }
 
-    constructor(
-        private route: ActivatedRoute,
-        private moviesSelector: MoviesSelector,
-        private favouritesSelector: FavouritesSelector,
-        private favouritesActions: FavouritesActions
-    ) { }
-
-    ngOnInit(): void {
-        this.subscriptions.add(this.route.queryParams.pipe(
-            mergeMap(queryParams =>
-                this.moviesSelector.get$(queryParams.genre as GenreTypes[])
-            ))
-            .subscribe(movies => {
-                this.allMovies = this.sort(this.activeSortType, movies);
-                this.filteredMovies = this.allMovies;
-            }));
-
-        this.subscriptions.add(this.favouritesSelector.get$()
-            .subscribe(favourites => this.favourites = favourites));
-    }
-
-    ngOnDestroy(): void {
-        this.subscriptions.unsubscribe();
+    ngOnChanges(): void {
+        this.movies = this.sort(this.activeSortType, this.movies);
+        this.filteredMovies = this.movies;
     }
 
     onSearch(query: string): void {
-        const movies = query ? this.allMovies.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase())) : this.allMovies;
+        const movies = query ? this.movies.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase())) : this.movies;
         this.filteredMovies = this.sort(this.activeSortType, movies);
     }
 
