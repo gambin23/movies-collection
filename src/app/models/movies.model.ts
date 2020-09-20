@@ -10,15 +10,15 @@ export interface Movie {
 }
 
 export enum GenreTypes {
-    Action = "Action",
-    Adventure = "Adventure",
-    Biography = "Biography",
-    Comedy = "Comedy",
-    Crime = "Crime",
-    Drama = "Drama",
-    History = "History",
-    Mystery = "Mystery",
-    Scifi = "Sci-Fi",
-    Sport = "Sport",
-    Thriller = "Thriller"
+    action = "Action",
+    adventure = "Adventure",
+    biography = "Biography",
+    comedy = "Comedy",
+    crime = "Crime",
+    drama = "Drama",
+    history = "History",
+    mystery = "Mystery",
+    scifi = "Sci-Fi",
+    sport = "Sport",
+    thriller = "Thriller"
 }

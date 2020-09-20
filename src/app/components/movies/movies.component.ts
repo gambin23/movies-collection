@@ -17,15 +17,18 @@ export class MoviesComponent implements OnChanges {
 
     public filteredMovies: Movie[];
     public activeSortType: SortType = "alphabetical";
+    public searchQuery = "";
 
     constructor(private favouritesActions: FavouritesActions) { }
 
     ngOnChanges(): void {
         this.movies = this.sort(this.activeSortType, this.movies);
         this.filteredMovies = this.movies;
+        this.searchQuery = "";
     }
 
     onSearch(query: string): void {
+        this.searchQuery = query;
         const movies = query ? this.movies.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase())) : this.movies;
         this.filteredMovies = this.sort(this.activeSortType, movies);
     }

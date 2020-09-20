@@ -6,11 +6,15 @@
         <mat-toolbar routerLink="/" class="clickable">
             Home
         </mat-toolbar>
-        <mat-nav-list>
-            <mat-list-item *ngFor="let genre of genres" routerLink="/movies" [queryParams]="{genre:genre|lowercase}" routerLinkActive="mat-list-item-focus">
-                {{genre}}
+        <mat-selection-list>
+            <mat-list-item routerLink="/movies" (click)="setGenres(null)" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="mat-list-item-focus"
+                class="clickable">
+                All
             </mat-list-item>
-        </mat-nav-list>
+            <mat-list-option *ngFor="let genre of allGenres" (click)="setGenres(genre)" [selected]="isGenreSelected(genre)">
+                {{genreTypes[genre]}}
+            </mat-list-option>
+        </mat-selection-list>
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>

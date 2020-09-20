@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { MoviesPageComponent } from "./pages/movies.page";
 import { MoviePageComponent } from "./pages/movie.page";
+import { GenreParamsGuard } from "./common/guards/genre-params.guard";
 
 const routes: Routes = [
     {
@@ -12,7 +13,8 @@ const routes: Routes = [
     },
     {
         path: "movies",
-        component: MoviesPageComponent
+        component: MoviesPageComponent,
+        canActivate: [GenreParamsGuard]
     },
     {
         path: "movies/:key",

@@ -10,6 +10,7 @@ import { MoviesPageComponent } from "./pages/movies.page";
 import { MoviePageComponent } from "./pages/movie.page";
 import { MoviesComponent } from "./components/movies/movies.component";
 import { MovieComponent } from "./components/movie/movie.component";
+import { GenreParamsGuard } from "./common/guards/genre-params.guard";
 
 @NgModule({
     declarations: [
@@ -28,6 +29,9 @@ import { MovieComponent } from "./components/movie/movie.component";
     ],
     bootstrap: [
         AppComponent
+    ],
+    providers: [
+        GenreParamsGuard
     ]
 })
 export class AppModule { }

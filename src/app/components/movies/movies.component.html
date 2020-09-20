@@ -1,6 +1,6 @@
 <mat-toolbar color="accent">
     <mat-form-field floatLabel="never" fxFlex>
-        <input matInput (input)="onSearch($event.target.value)" autocomplete="off">
+        <input matInput (input)="onSearch($event.target.value)" [value]="searchQuery" autocomplete="off">
         <mat-placeholder>Search…</mat-placeholder>
     </mat-form-field>
 </mat-toolbar>
