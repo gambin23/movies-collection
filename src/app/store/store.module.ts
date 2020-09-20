@@ -9,6 +9,9 @@ import { reducers, metaReducers } from "./reducers";
 import { MoviesEffects } from "./effects/movies.effects";
 import { MoviesService } from "../store/services/movies.service";
 import { MoviesSelector } from "./selectors/movies.selector";
+import { MoviesActions } from "./actions/movies.actions";
+import { FavouritesActions } from "./actions/favourites.actions";
+import { FavouritesSelector } from "./selectors/favourites.selector";
 
 @NgModule({
     imports: [
@@ -19,7 +22,10 @@ import { MoviesSelector } from "./selectors/movies.selector";
     ],
     providers: [
         MoviesService,
-        MoviesSelector
-    ],
+        MoviesSelector,
+        MoviesActions,
+        FavouritesActions,
+        FavouritesSelector
+    ]
 })
 export class AppStoreModule { }

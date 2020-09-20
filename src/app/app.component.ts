@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
 
 import { GenreTypes } from "./models/movies.model";
-import { loadMovies } from "./store/actions/movies.actions";
-import { AppState } from "./store/reducers";
+import { MoviesActions } from "./store/actions/movies.actions";
 
 @Component({
     selector: "app-root",
@@ -13,10 +11,10 @@ export class AppComponent implements OnInit {
 
     public genres = Object.keys(GenreTypes);
 
-    constructor(private store: Store<AppState>) {
+    constructor(private moviesActions: MoviesActions) {
 
     }
     ngOnInit(): void {
-        this.store.dispatch(loadMovies());
+        this.moviesActions.loadMovies();
     }
 }

@@ -7,6 +7,8 @@ import { orderBy } from "lodash";
 import { MoviesSelector } from "../../store/selectors/movies.selector";
 import { GenreTypes, Movie } from "../../models/movies.model";
 import { SortType } from "./movies.model";
+import { FavouritesActions } from "../../store/actions/favourites.actions";
+import { FavouritesSelector } from "../../store/selectors/favourites.selector";
 
 @Component({
     selector: "movies",
@@ -16,28 +18,34 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
     public allMovies: Movie[];
     public filteredMovies: Movie[];
+    public favourites: string[];
     public activeSortType: SortType = "alphabetical";
 
-    private subscription = new Subscription();
+    private subscriptions = new Subscription();
 
     constructor(
         private route: ActivatedRoute,
-        private moviesSelector: MoviesSelector
+        private moviesSelector: MoviesSelector,
+        private favouritesSelector: FavouritesSelector,
+        private favouritesActions: FavouritesActions
     ) { }
 
     ngOnInit(): void {
-        this.subscription = this.route.queryParams.pipe(
+        this.subscriptions.add(this.route.queryParams.pipe(
             mergeMap(queryParams =>
                 this.moviesSelector.get$(queryParams.genre as GenreTypes[])
             ))
             .subscribe(movies => {
                 this.allMovies = this.sort(this.activeSortType, movies);
                 this.filteredMovies = this.allMovies;
-            });
+            }));
+
+        this.subscriptions.add(this.favouritesSelector.get$()
+            .subscribe(favourites => this.favourites = favourites));
     }
 
     ngOnDestroy(): void {
-        this.subscription.unsubscribe();
+        this.subscriptions.unsubscribe();
     }
 
     onSearch(query: string): void {
@@ -48,6 +56,15 @@ export class MoviesComponent implements OnInit, OnDestroy {
     onSort(type: SortType): void {
         this.activeSortType = type;
         this.filteredMovies = this.sort(type, this.filteredMovies);
+    }
+
+    onSetFavourite(key: string, event: Event): void {
+        event.stopPropagation();
+        this.isFavourite(key) ? this.favouritesActions.removeFavourite(key) : this.favouritesActions.addFavourite(key);
+    }
+
+    isFavourite(key: string): boolean {
+        return this.favourites?.some(f => f === key);
     }
 
     private sort(type: SortType, movies: Movie[]): Movie[] {

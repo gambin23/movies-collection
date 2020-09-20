@@ -21,6 +21,10 @@
     <mat-card *ngFor="let movie of filteredMovies" [routerLink]="movie.key" class="clickable mat-card-grid">
         <img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
         <mat-card-header color="accent">
+            <mat-icon (click)="onSetFavourite(movie.key, $event)" [class.active]="isFavourite(movie.key)"
+                [matTooltip]="isFavourite(movie.key) ? 'Remove from Favourites' : 'Add to Favourites'" class="movies-fav-icon clickable">
+                stars
+            </mat-icon>
             <mat-card-title color="accent">{{movie.name}} ({{movie.rate}})</mat-card-title>
         </mat-card-header>
         <mat-card-content>

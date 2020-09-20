@@ -2,6 +2,7 @@ import { ActionReducerMap, MetaReducer } from "@ngrx/store";
 
 import { environment } from "../../../environments/environment";
 import { moviesReducer } from "./movies.reducer";
+import { favouritesReducer } from "./favourites.reducer";
 import { Movie } from "../../models/movies.model";
 
 export interface MoviesState {
@@ -10,12 +11,18 @@ export interface MoviesState {
     error: string;
 }
 
+export interface FavouritesState {
+    favourites: string[];
+}
+
 export interface AppState {
     movies: MoviesState;
+    favourites: FavouritesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-    movies: moviesReducer
+    movies: moviesReducer,
+    favourites: favouritesReducer
 };
 
 
