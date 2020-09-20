@@ -1,0 +1,12 @@
+.movie-card {
+    background-color: mat-color($black);
+    padding: 20px;
+
+    & img {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block;
+        height: 300px;
+        width: 220px !important;
+    }
+}

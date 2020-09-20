@@ -1,0 +1,13 @@
+.movies-fav-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 32px !important;
+    height: 32px !important;
+    width: 32px !important;
+    color: $white;
+
+    &.active {
+        color: mat-color($accent);
+    }
+}

@@ -9,3 +9,9 @@ $gray: mat-palette($mat-grey, 700);
 
 $theme: mat-dark-theme((color: (primary: $primary, accent: $accent, warn: $warn, )));
 @include angular-material-theme($theme);
+
+
+@import 'card';
+@import 'chips';
+@import 'list-item';
+@import 'mat-icon';

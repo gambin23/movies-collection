@@ -1,9 +1,7 @@
 @import '~@angular/material/theming';
-@import 'theme';
-@import 'card';
-@import 'chips';
-@import 'list-item';
-@import 'mat-icon';
+@import 'theme/theme';
+@import 'movies';
+@import 'movie';
 
 html,
 body {
@@ -21,40 +19,15 @@ body {
 }
 
 #logo {
-    margin: 15px;
+    margin: 16px;
 }
 
 .container {
-    padding: 15px;
+    padding: 16px;
 }
 
 .clickable {
     cursor: pointer;
 }
 
-.movie-card {
-    background-color: mat-color($black);
-    padding: 20px;
 
-    & img {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block;
-        height: 300px;
-        width: 220px !important;
-    }
-}
-
-.movies-fav-icon {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 32px !important;
-    height: 32px !important;
-    width: 32px !important;
-    color: $white;
-
-    &.active {
-        color: mat-color($accent);
-    }
-}
