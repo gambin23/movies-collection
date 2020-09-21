@@ -18,6 +18,10 @@ body {
     outline: none;
 }
 
+a {
+    color: mat-color($accent);
+}
+
 #logo {
     margin: 16px;
 }
@@ -29,5 +33,7 @@ body {
 .clickable {
     cursor: pointer;
 }
+
+
 
 

@@ -7,7 +7,7 @@ import { environment } from "../../environments/environment";
 import { MockModule } from "src/mock/mock.module";
 import { reducers, metaReducers } from "./reducers";
 import { MoviesEffects } from "./effects/movies.effects";
-import { MoviesService } from "../store/services/movies.service";
+import { MoviesService } from "../services/movies.service";
 import { MoviesSelector } from "./selectors/movies.selector";
 import { MoviesActions } from "./actions/movies.actions";
 import { FavouritesActions } from "./actions/favourites.actions";

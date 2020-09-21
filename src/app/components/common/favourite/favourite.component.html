@@ -1,0 +1,4 @@
+<mat-icon (click)="onSetFavourite(key, $event)" [class.active]="isFavourite(key)"
+    [matTooltip]="isFavourite(key) ? 'Remove from Favourites' : 'Add to Favourites'" class="clickable fav-icon">
+    stars
+</mat-icon>

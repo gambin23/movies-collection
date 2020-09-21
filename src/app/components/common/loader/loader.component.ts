@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { MoviesSelector } from "../../store/selectors/movies.selector";
+import { MoviesSelector } from "../../../store/selectors/movies.selector";
 
 @Component({
     selector: "loader",

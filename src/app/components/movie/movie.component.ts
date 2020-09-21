@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 
-import { Movie } from "../../models/movies.model";
+import { GenreTypes, Movie } from "../../models/movies.model";
 
 @Component({
     selector: "movie",
@@ -9,4 +9,6 @@ import { Movie } from "../../models/movies.model";
 export class MovieComponent {
 
     @Input() movie: Movie;
+
+    public genreTypes = GenreTypes;
 }

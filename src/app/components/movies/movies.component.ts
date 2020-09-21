@@ -38,14 +38,7 @@ export class MoviesComponent implements OnChanges {
         this.filteredMovies = this.sort(type, this.filteredMovies);
     }
 
-    onSetFavourite(key: string, event: Event): void {
-        event.stopPropagation();
-        this.isFavourite(key) ? this.favouritesActions.removeFavourite(key) : this.favouritesActions.addFavourite(key);
-    }
 
-    isFavourite(key: string): boolean {
-        return this.favourites?.some(f => f === key);
-    }
 
     private sort(type: SortType, movies: Movie[]): Movie[] {
         switch (type) {

@@ -1,0 +1,9 @@
+<mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <b>Synopsis</b>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-progress-bar *ngIf="isBusy" mode="indeterminate" color="accent"></mat-progress-bar>
+    <div [innerHTML]="synopsis?.innerHTML"></div>
+</mat-expansion-panel>

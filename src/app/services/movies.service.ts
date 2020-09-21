@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { MockClient } from "src/mock/mock.client";
-import { Movie } from "../../models/movies.model";
+import { Movie } from "../models/movies.model";
 
 @Injectable()
 export class MoviesService {

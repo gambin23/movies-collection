@@ -7,6 +7,7 @@ export interface Movie {
     rate: number;
     length: string;
     img: string;
+    imdb: string;
 }
 
 export enum GenreTypes {

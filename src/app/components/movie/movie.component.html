@@ -1,20 +1,39 @@
 <mat-toolbar color="accent">
     {{movie?.name}}
 </mat-toolbar>
-<mat-toolbar>
+<mat-toolbar fxLayoutAlign="space-between center">
     <mat-chip-list aria-label="Genres">
         <mat-chip *ngFor="let genre of movie.genres">
-            {{genre|uppercase}}
+            {{genreTypes[genre]|uppercase}}
         </mat-chip>
     </mat-chip-list>
+    <favourite [key]="movie?.key"></favourite>
 </mat-toolbar>
-<div class="container" fxLayout.gt-sm="row" fxLayout="column">
+<div class="container" fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="16px">
     <div fxFlex.gt-md="20%" class="movie-card-img">
-        <img [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
+        <mat-card>
+            <div style="text-align: center;">
+                <img [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
+            </div>
+            <mat-card-content>
+                <mat-card>
+                    Rating: <b>{{movie?.rate}}</b></mat-card>
+                <mat-card>
+                    Length: <b>{{movie?.length}}</b>
+                </mat-card>
+            </mat-card-content>
+        </mat-card>
     </div>
     <div fxFlex.gt-md="80%">
-        <p>{{movie?.description}}</p>
-        <p>{{movie?.rate}}</p>
-        <p>{{movie?.length}}</p>
+        <mat-expansion-panel expanded hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <b>Description</b>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description>{{movie?.description}}</mat-panel-description>
+        </mat-expansion-panel>
+        <br>
+        <movie-synopsis [imdb]="movie?.imdb"></movie-synopsis>
     </div>
 </div>
