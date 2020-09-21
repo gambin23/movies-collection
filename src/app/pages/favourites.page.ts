@@ -25,7 +25,7 @@ export class FavouritesPageComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.subscription = this.favouritesSelector.get$().pipe(
             map(favourites => {
-                this.movies$ = combineLatest(favourites.map(key => this.moviesSelector.getByKey$(key)));
+                this.movies$ = favourites.length > 0 ? combineLatest(favourites.map(key => this.moviesSelector.getByKey$(key))) : of([]);
                 this.favourites = favourites;
             })).subscribe();
     }

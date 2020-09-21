@@ -1,0 +1,5 @@
+.mat-toolbar {
+    &.active {
+        color: mat-color($accent);
+    }
+}

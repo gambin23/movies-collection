@@ -5,17 +5,22 @@
     </mat-form-field>
 </mat-toolbar>
 <mat-toolbar fxLayoutAlign="space-between center">
-    <div>
-        Showing {{filteredMovies?.length}} of {{movies?.length}}
+    <div *ngIf="filteredMovies?.length === 0">
+        There are no movies to display with this criteria.
     </div>
-    <div fxLayoutGap="10px">
-        <mat-icon (click)="onSort('rating')" matTooltip="Sort by Rating" class="clickable" [class.active]="activeSortType === 'rating'">
-            star_border
-        </mat-icon>
-        <mat-icon (click)="onSort('alphabetical')" matTooltip="Sort Alphabetically" class="clickable" [class.active]="activeSortType === 'alphabetical'">
-            sort_by_alpha
-        </mat-icon>
-    </div>
+    <ng-container *ngIf="filteredMovies?.length> 0">
+        <div>
+            Showing {{filteredMovies.length}} of {{movies?.length}}
+        </div>
+        <div fxLayoutGap="10px">
+            <mat-icon (click)="onSort('rating')" matTooltip="Sort by Rating" class="clickable" [class.active]="activeSortType === 'rating'">
+                star_border
+            </mat-icon>
+            <mat-icon (click)="onSort('alphabetical')" matTooltip="Sort Alphabetically" class="clickable" [class.active]="activeSortType === 'alphabetical'">
+                sort_by_alpha
+            </mat-icon>
+        </div>
+    </ng-container>
 </mat-toolbar>
 <div class="container" fxLayout="row wrap" fxLayoutGap="15px">
     <mat-card *ngFor="let movie of filteredMovies" [routerLink]="movie.key" class="clickable mat-card-grid">
