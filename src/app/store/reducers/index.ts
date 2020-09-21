@@ -1,4 +1,5 @@
-import { ActionReducerMap, MetaReducer } from "@ngrx/store";
+import { ActionReducer, ActionReducerMap, MetaReducer } from "@ngrx/store";
+import { localStorageSync } from "ngrx-store-localstorage";
 
 import { environment } from "../../../environments/environment";
 import { moviesReducer } from "./movies.reducer";
@@ -20,10 +21,14 @@ export interface AppState {
     favourites: FavouritesState;
 }
 
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+    return localStorageSync({ keys: ["favourites"], rehydrate: true })(reducer);
+}
+
 export const reducers: ActionReducerMap<AppState> = {
     movies: moviesReducer,
     favourites: favouritesReducer
 };
 
+export const metaReducers: MetaReducer<AppState>[] = [localStorageSyncReducer];
 
-export const metaReducers: MetaReducer<AppState>[] = environment.production ? [] : [];
