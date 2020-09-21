@@ -28,7 +28,6 @@ export class MoviePageComponent implements OnInit, OnDestroy {
             mergeMap(params =>
                 this.moviesSelector.getByKey$(params.key as string)
             ));
-
         this.favourites$ = this.favouritesSelector.get$();
     }
 

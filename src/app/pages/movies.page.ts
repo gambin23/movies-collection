@@ -29,7 +29,6 @@ export class MoviesPageComponent implements OnInit, OnDestroy {
             mergeMap(queryParams =>
                 this.moviesSelector.get$(queryParams.genre as GenreTypes[])
             ));
-
         this.favourites$ = this.favouritesSelector.get$();
     }
 

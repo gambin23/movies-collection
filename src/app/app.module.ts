@@ -7,6 +7,7 @@ import { AppStoreModule } from "./store/store.module";
 import { CommonUiModule } from "./common/common.module";
 import { AppComponent } from "./app.component";
 import { FavouritesPageComponent } from "./pages/favourites.page";
+import { LoaderComponent } from "./components/loader/loader.component";
 import { MoviesPageComponent } from "./pages/movies.page";
 import { MoviePageComponent } from "./pages/movie.page";
 import { MoviesComponent } from "./components/movies/movies.component";
@@ -16,6 +17,7 @@ import { MovieComponent } from "./components/movie/movie.component";
     declarations: [
         AppComponent,
         FavouritesPageComponent,
+        LoaderComponent,
         MoviesPageComponent,
         MoviePageComponent,
         MoviesComponent,

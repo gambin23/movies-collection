@@ -26,8 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.moviesActions.loadMovies();
 
-        this.subscription = this.route.queryParams.subscribe(queryParams => {
-            this.selectedGenres = queryParams.genre ? queryParams.genre : [];
+        this.subscription = this.route.queryParamMap.subscribe(queryParams => {
+            this.selectedGenres = queryParams.getAll("genre");
         });
     }
 

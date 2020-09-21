@@ -13,6 +13,7 @@ $theme: mat-dark-theme((color: (primary: $primary, accent: $accent, warn: $warn,
 
 @import 'card';
 @import 'chips';
+@import 'icon';
 @import 'list-item';
-@import 'mat-icon';
+@import 'progress-bar';
 @import 'toolbar';

@@ -8,7 +8,7 @@
     <div *ngIf="filteredMovies?.length === 0">
         There are no movies to display with this criteria.
     </div>
-    <ng-container *ngIf="filteredMovies?.length> 0">
+    <ng-container *ngIf="filteredMovies?.length > 0">
         <div>
             Showing {{filteredMovies.length}} of {{movies?.length}}
         </div>
@@ -23,7 +23,7 @@
     </ng-container>
 </mat-toolbar>
 <div class="container" fxLayout="row wrap" fxLayoutGap="15px">
-    <mat-card *ngFor="let movie of filteredMovies" [routerLink]="movie.key" class="clickable mat-card-grid">
+    <mat-card *ngFor="let movie of filteredMovies" [routerLink]="['/movies', movie.key]" class="clickable mat-card-grid">
         <img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
         <mat-card-header color="accent">
             <mat-icon (click)="onSetFavourite(movie.key, $event)" [class.active]="isFavourite(movie.key)"
