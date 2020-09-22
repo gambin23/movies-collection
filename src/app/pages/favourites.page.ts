@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { combineLatest, Observable, of, Subscription } from "rxjs";
+import { Observable, of, Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { MoviesSelector } from "../store/selectors/movies.selector";
@@ -25,7 +25,7 @@ export class FavouritesPageComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.subscription = this.favouritesSelector.get$().pipe(
             map(favourites => {
-                this.movies$ = favourites.length > 0 ? combineLatest(favourites.map(key => this.moviesSelector.getByKey$(key))) : of([]);
+                this.movies$ = favourites.length > 0 ? this.moviesSelector.getByKeys$(favourites) : of([]);
                 this.favourites = favourites;
             })).subscribe();
     }

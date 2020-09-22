@@ -8,11 +8,6 @@ import { FavouritesPageComponent } from "./pages/favourites.page";
 
 const routes: Routes = [
     {
-        path: "",
-        redirectTo: "/movies",
-        pathMatch: "full"
-    },
-    {
         path: "movies",
         component: MoviesPageComponent,
         canActivate: [GenreParamsGuard]
@@ -24,6 +19,11 @@ const routes: Routes = [
     {
         path: "favourites",
         component: FavouritesPageComponent
+    },
+    {
+        path: "**",
+        redirectTo: "movies",
+        pathMatch: "full"
     }
 ];
 

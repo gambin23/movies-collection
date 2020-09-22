@@ -24,6 +24,12 @@ export class MoviesSelector {
         ));
     }
 
+    public getByKeys$(keys: string[]): Observable<Movie[]> {
+        return this.store.pipe(select(
+            createSelector(this.moviesState, state => state.data?.filter(movie => keys.includes(movie.key)))
+        ));
+    }
+
     public isBusy$(): Observable<boolean> {
         return this.store.pipe(select(
             createSelector(this.moviesState, state => state.isBusy)
