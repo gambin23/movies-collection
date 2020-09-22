@@ -21,11 +21,10 @@ export class MovieSynopsisComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.subscription = this.movieSynopsisService.get$(this.imdb).subscribe(
-            synopsis => {
-                this.synopsis = synopsis;
-                this.isBusy = false;
-            },);
+        this.subscription = this.movieSynopsisService.get$(this.imdb).subscribe(synopsis => {
+            this.synopsis = synopsis;
+            this.isBusy = false;
+        });
     }
 
     ngOnDestroy(): void {

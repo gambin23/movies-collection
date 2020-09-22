@@ -1,10 +1,8 @@
-import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, Input, OnChanges } from "@angular/core";
 import { orderBy } from "lodash";
 
 import { Movie } from "../../models/movies.model";
 import { SortType } from "./movies.model";
-import { FavouritesActions } from "../../store/actions/favourites.actions";
 
 @Component({
     selector: "movies",
@@ -19,7 +17,7 @@ export class MoviesComponent implements OnChanges {
     public activeSortType: SortType = "alphabetical";
     public searchQuery = "";
 
-    constructor(private favouritesActions: FavouritesActions) { }
+    constructor() { }
 
     ngOnChanges(): void {
         this.movies = this.sort(this.activeSortType, this.movies);
@@ -37,8 +35,6 @@ export class MoviesComponent implements OnChanges {
         this.activeSortType = type;
         this.filteredMovies = this.sort(type, this.filteredMovies);
     }
-
-
 
     private sort(type: SortType, movies: Movie[]): Movie[] {
         switch (type) {
