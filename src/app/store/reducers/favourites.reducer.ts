@@ -3,7 +3,7 @@ import { createReducer, on } from "@ngrx/store";
 import { FavouritesState } from ".";
 import { addFavourite, removeFavourite } from "../actions/favourites.actions";
 
-const initialState: FavouritesState = {
+export const initialState: FavouritesState = {
     favourites: []
 };
 

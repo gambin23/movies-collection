@@ -1,5 +1,5 @@
+import { mockMovies } from "../../models/movies.model";
 import { MoviesComponent } from "./movies.component";
-import { mockMovies } from "./movies.model";
 
 describe("MoviesComponent", () => {
     let component: MoviesComponent;

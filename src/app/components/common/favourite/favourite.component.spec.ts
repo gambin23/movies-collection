@@ -5,7 +5,7 @@ import { FavouritesActions } from "../../../store/actions/favourites.actions";
 import { FavouritesSelector } from "../../../store/selectors/favourites.selector";
 import { FavouriteComponent } from "./favourite.component";
 
-fdescribe("FavouriteComponent", () => {
+describe("FavouriteComponent", () => {
     let component: FavouriteComponent;
     let actions: FavouritesActions;
     beforeEach(() => {
