@@ -10,7 +10,8 @@
     </div>
     <ng-container *ngIf="filteredMovies?.length > 0">
         <div>
-            Showing {{filteredMovies.length}} of {{movies?.length}}
+            <span fxHide.lt-sm>Showing </span>
+            {{filteredMovies.length}} of {{movies?.length}}
         </div>
         <div fxLayoutGap="10px">
             <mat-icon (click)="onSort('rating')" matTooltip="Sort by Rating" class="clickable" [class.active]="activeSortType === 'rating'">
@@ -30,12 +31,8 @@
             <mat-card-title color="accent">{{movie.name}} ({{movie.rate}})</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>{{movie.description|truncate:150}}</p>
-            <mat-chip-list aria-label="Genres">
-                <mat-chip *ngFor="let genre of movie.genres">
-                    {{genre|uppercase}}
-                </mat-chip>
-            </mat-chip-list>
+            <p fxHide.lt-sm>{{movie.description|truncate:150}}</p>
+           <genres [genres]="movie.genres"></genres>
         </mat-card-content>
     </mat-card>
 </div>

@@ -1,9 +1,8 @@
-import { FavouritesState, } from ".";
 import { MoviesActionTypes } from "../actions/movies.actions";
 import { initialState, moviesReducer } from "./movies.reducer";
 import { mockMovies } from "../../models/movies.model";
 
-fdescribe("MoviesReducer", () => {
+describe("MoviesReducer", () => {
 
     it("should have an empty initial state", () => {
         const action = { type: "test" } as any;

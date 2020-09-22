@@ -16,6 +16,7 @@ import { MoviesComponent } from "./components/movies/movies.component";
 import { MovieComponent } from "./components/movie/movie.component";
 import { MovieSynopsisComponent } from "./components/movie-synopsis/movie-synopsis.component";
 import { MovieSynopsisService } from "./services/movie-synopsis.service";
+import { GenresComponent } from "./components/common/tags/genres.component";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { MovieSynopsisService } from "./services/movie-synopsis.service";
         MoviePageComponent,
         MoviesComponent,
         MovieComponent,
-        MovieSynopsisComponent
+        MovieSynopsisComponent,
+        GenresComponent
     ],
     imports: [
         BrowserModule,

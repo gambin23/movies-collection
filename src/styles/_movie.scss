@@ -10,3 +10,14 @@
         width: 220px !important;
     }
 }
+
+.movie-header {
+    text-align: center;
+
+    & img {
+        @media only screen and (max-device-width: 720px) {
+            width: 150px;
+        }
+
+    }
+}

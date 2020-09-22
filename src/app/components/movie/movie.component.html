@@ -2,17 +2,13 @@
     {{movie?.name}}
 </mat-toolbar>
 <mat-toolbar fxLayoutAlign="space-between center">
-    <mat-chip-list aria-label="Genres">
-        <mat-chip *ngFor="let genre of movie.genres">
-            {{genreTypes[genre]|uppercase}}
-        </mat-chip>
-    </mat-chip-list>
+    <genres [genres]="movie?.genres" fxHide.lt-sm></genres>
     <favourite [key]="movie?.key"></favourite>
 </mat-toolbar>
 <div class="container" fxLayout.gt-sm="row" fxLayout="column" fxLayoutGap="16px">
     <div fxFlex.gt-md="20%" class="movie-card-img">
         <mat-card>
-            <div style="text-align: center;">
+            <div class="movie-header">
                 <img [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
             </div>
             <mat-card-content>
@@ -21,6 +17,7 @@
                 <mat-card>
                     Length: <b>{{movie?.length}}</b>
                 </mat-card>
+                <genres [genres]="movie?.genres" fxHide.gt-md></genres>
             </mat-card-content>
         </mat-card>
     </div>
