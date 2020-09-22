@@ -16,6 +16,7 @@ export class MoviesComponent implements OnChanges {
     public filteredMovies: Movie[];
     public activeSortType: SortType = "alphabetical";
     public searchQuery = "";
+    public isListView = false;
 
     constructor() { }
 
@@ -34,6 +35,10 @@ export class MoviesComponent implements OnChanges {
     onSort(type: SortType): void {
         this.activeSortType = type;
         this.filteredMovies = this.sort(type, this.filteredMovies);
+    }
+
+    onChangeView(): void {
+        this.isListView = !this.isListView;
     }
 
     private sort(type: SortType, movies: Movie[]): Movie[] {

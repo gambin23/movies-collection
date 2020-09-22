@@ -14,6 +14,9 @@
             {{filteredMovies.length}} of {{movies?.length}}
         </div>
         <div fxLayoutGap="10px">
+            <mat-icon (click)="onChangeView()" [matTooltip]="isListView ? 'View as Grid' : 'View as List'" class="clickable" [class.active]="!isListView">
+                border_all
+            </mat-icon>
             <mat-icon (click)="onSort('rating')" matTooltip="Sort by Rating" class="clickable" [class.active]="activeSortType === 'rating'">
                 star_border
             </mat-icon>
@@ -23,7 +26,7 @@
         </div>
     </ng-container>
 </mat-toolbar>
-<div class="container" fxLayout="row wrap" fxLayoutGap="15px">
+<div *ngIf="!isListView" class="container" fxLayout="row wrap" fxLayoutGap="16px">
     <mat-card *ngFor="let movie of filteredMovies" [routerLink]="['/movies', movie.key]" class="clickable mat-card-grid">
         <img mat-card-image [src]="'/assets/images/movie-covers/' + movie.img" [alt]="movie.img">
         <mat-card-header color="accent">
@@ -32,7 +35,21 @@
         </mat-card-header>
         <mat-card-content>
             <p fxHide.lt-sm>{{movie.description|truncate:150}}</p>
-           <genres [genres]="movie.genres"></genres>
+            <genres [genres]="movie.genres"></genres>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div *ngIf="isListView" class="container" fxLayout="row wrap">
+    <mat-card fxFlex="100%" *ngFor="let movie of filteredMovies" [routerLink]="['/movies', movie.key]" class="clickable">
+        <mat-card-header color="accent">
+            <mat-card-title color="accent">{{movie.name}} ({{movie.rate}})</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{movie.description|truncate:150}}</p>
+            <div fxLayoutAlign="space-between">
+                <genres [genres]="movie.genres"></genres>
+                <favourite [key]="movie.key" class="fav-icon"></favourite>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>
