@@ -1,7 +1,7 @@
 import { MoviesComponent } from "./movies.component";
 import { mockMovies } from "./movies.model";
 
-fdescribe("MoviesComponent", () => {
+describe("MoviesComponent", () => {
     let component: MoviesComponent;
 
     beforeEach(() => {
